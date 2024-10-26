@@ -18,7 +18,7 @@ const Home = () => {
             muted 
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src='/bgvideo.mp4' type="video/mp4" />
+            <source src='/bgvideo_Trim_Trim.mp4' type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Overlay for darkening video */}
