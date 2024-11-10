@@ -1,5 +1,7 @@
-// import React from "react";
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
+import { FiMenu, FiX } from 'react-icons/fi';
 
 // const Navbar = () => {
 //   return (
@@ -51,8 +53,6 @@ import { Link } from 'react-router-dom';
 
 // export default Navbar;
 
-import React, { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
