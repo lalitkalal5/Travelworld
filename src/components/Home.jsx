@@ -1,6 +1,49 @@
-// src/components/Home.js
 import React from 'react';
 import Navbar from './Navbar'
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { MapPin, Phone, Mail, Plane, PassportIcon, Shield, Loader2Icon, Briefcase } from 'lucide-react';
+
+
+
+
+// const ServiceCard = ({ icon, title, description }) => {
+//   return (
+//     <div className="p-6 bg-white rounded-lg shadow-md text-center">
+//       <div className="flex justify-center mb-4">{icon}</div>
+//       <h3 className="text-xl font-semibold mb-2">{title}</h3>
+//       <p className="text-gray-600">{description}</p>
+//     </div>
+//   );
+// };
+
+const ServiceCard = ({ icon, title, description }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (title === "LIC Services") {
+      navigate('/lic');
+    }
+    if(title ==="Visa Services"){
+      window.open('https://wa.me/+919998966544?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20visa%20services')
+    }
+    if(title ==="Travel Planning"){
+      window.open("https://wa.me/+919998966544?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20Travel%20planning%20services")
+    }
+    // Add other navigation logic for other services if needed
+  };
+
+  return (
+    <div 
+      className="p-6 bg-white rounded-lg shadow-md text-center cursor-pointer hover:shadow-lg transition duration-300"
+      onClick={handleClick}
+    >
+      <div className="flex justify-center mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
 
 const Home = () => {
   return (
@@ -20,7 +63,7 @@ const Home = () => {
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png"
         alt="WhatsApp"  
-        className="relative z-20 w-20 h-20 mr-2"
+        className="relative z-20 w-10 h-10 mr-0 md:w-20 md:h-20 md:mr-2"
       />
       Chat with Us
     </a>
@@ -46,6 +89,34 @@ const Home = () => {
         <button className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-full text-lg">Start Your Journey</button>
         </div>
       </section>
+
+
+
+
+       
+      {/* Services Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <ServiceCard
+              icon={<Plane className="w-12 h-12 text-blue-600" />}
+              title="Travel Planning"
+              description="Comprehensive travel packages tailored to your needs"
+            />
+            <ServiceCard
+              icon={<Briefcase className="w-12 h-12 text-blue-600" />}
+              title="Visa Services"
+              description="Expert assistance with student and visitor visas"
+            />
+            <ServiceCard
+              icon={<Shield className="w-12 h-12 text-blue-600" />}
+              title="LIC Services"
+              description="Secure your future with our insurance solutions"
+            />
+          </div>
+        </div>
+      </div>
     
       {/* Popular Destinations */}
       <section className="py-16 text-center">
@@ -76,24 +147,32 @@ const Home = () => {
           {/* Add more destinations as needed */}
         </div>
       </section>
-      {/* whasapp icon */}
      
 
-      {/* Testimonials */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
-        <p className="max-w-2xl mx-auto text-lg italic">"The best travel experience ever!" - Anna</p>
-      </section>
+    
 
-      {/* Newsletter Signup */}
-      <section className="py-16 bg-sky-900 text-white text-center">
-        <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-        <p className="mb-6">Sign up for travel deals and inspiration.</p>
-        <div className="flex flex-col items-center">
-          <input type="email" placeholder="Enter your email" className="mb-4 p-3 rounded-md text-gray-700 w-72" />
-          <button className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-full text-lg">Subscribe</button>
+    
+    
+      {/* Why Choose Us Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              "Expert Visa Consultation",
+              "24/7 Support",
+              "Competitive Rates",
+              "Personalized Service",
+              "Fast Processing",
+              "Trusted Partner"
+            ].map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                <p className="font-semibold text-lg">{item}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>  
     </div>
     
     </>
@@ -101,4 +180,3 @@ const Home = () => {
 };
 
 export default Home;
-
